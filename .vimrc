@@ -8,16 +8,17 @@ call vundle#begin()
 set pastetoggle=<F2>
 set clipboard=unnamedplus
 nmap ,c :%s///gn <CR>
-inoremap = <Space>=<Space>
-inoremap " ""<Esc>i
-inoremap ' ''<Esc>i
-inoremap ( ()<Esc>i
+"inoremap = <Space>=<Space>
+"inoremap " ""<Esc>i
+"inoremap ' ''<Esc>i
+"inoremap ( ()<Esc>i
 autocmd VimLeave * call system("xsel -ib", getreg('+'))
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set shiftround
 set expandtab
+set number relativenumber
 
 
 " alternatively, pass a path where Vundle should install plugins
@@ -46,6 +47,7 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " All of your Plugins must be added before the following line
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'davidhalter/jedi-vim'
+Plugin 'auwsmit/vim-active-numebers'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -65,9 +67,10 @@ let mapleader = ","
 let g:jedi#auto_initialization = 1
 let g:jedi#popup_select_first = 1
 map <F6> :setlocal spell! spelllang=en_us <CR>
-map <F7> :set number! <CR>
+nnoremap <F5> :set number! <CR>
 map <F8> :!clear && pylint % <CR>
 map <F9> :!clear && python % <CR>
+nnoremap <F4> :set number! relativenumber! <CR>
 " An example for a vimrc file.
 "
 " Maintainer:	Bram Moolenaar <Bram@vim.org>

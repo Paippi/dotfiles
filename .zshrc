@@ -1,12 +1,15 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+# You should always add the following 2 lines to your initialization file used for all shell invocations
+GPG_TTY=$(tty)
+export GPG_TTY
 # Path to your oh-my-zsh installation.
   export ZSH=/home/putki/.oh-my-zsh
   export PATH="${PATH}:$HOME/bin"
   export VISUAL="vim"
   export PYLINTRC="$HOME/.pylintrc"
   export RANGER_LOAD_DEFAULT_RC=FALSE
+  export BROWSER=/usr/bin/qutebrowser
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -56,7 +59,6 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git vi-mode)
-
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -97,3 +99,4 @@ ranger() {
         exit
     fi
 }
+LS_COLORS=$LS_COLORS:'di=35' ; export LS_COLORS
