@@ -53,6 +53,9 @@ pushd $HOME/.vim/bundle/coc.nvim
 npm ci
 popd
 popd
+echo "Installing CoC Addons..."
+echo "You might need to install these manually if vim exits before waiting for the downloads to finish..."
+vim -c ':CocInstall coc-rust-analyzer coc-python coc-json coc-tsserver coc-toml' -c 'qa!'
 
 echo "Setup i3blocks..."
 git clone https://github.com/vivien/i3blocks-contrib $HOME/.config/i3blocks
