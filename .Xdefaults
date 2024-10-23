@@ -1,0 +1,52 @@
+! URxvt.transparent:   true
+URxvt.shading:       20
+! xft:Terminus:size=10
+! PowerlineSymbols give the special characters required. Comes in packets powerline-fonts or powerline
+URxvt*font:             xft:Bitstream Vera Sans Mono:size=14:antialias:true,xft:PowerlineSymbols:antialias=true,xft:SauceCodePro NF:pixelsize=14
+URxvt*termName:         rxvt
+URxvt*scrollBar:        true
+URxvt*scrollstyle:      plain
+URxvt*scrollBar_right:  true
+URxvt*perl-lib:         /usr/lib/urxvt/perl/
+! Required package urxvt-perls
+URxvt*perl-ext-common:  default,matcher,resize-font
+URxvt*urlLauncher:      /usr/bin/firefox
+URxvt*matcher.button:   1
+! ctrl + j smaller font size, ctrl + k larger font size
+! Requires urxvt-resize-font
+URxvt.keysym.C-j:         resize-font:smaller
+URxvt.keysym.C-k:         resize-font:bigger
+
+Xft*dpi:                96
+Xft*antialias:          true
+Xft*hinting:            full
+
+! PaperColor Theme dark
+URxvt*cursorColor: #25c3dc
+URxvt*pointerColor: #25c3dc
+URxvt.foreground: #f2f2f2
+URxvt.background: #1C1C1C
+! black
+URxvt.color0: #2c2c2c
+URxvt.color8: #969694
+! red
+URxvt.color1: #c62828
+URxvt.color9: #f15250
+! green
+URxvt.color2: #558b2e
+URxvt.color10: #86bd47
+! yellow / orange
+URxvt.color3: #f9a825
+URxvt.color11: #f8e63a
+! blue
+URxvt.color4: #1565c1
+URxvt.color12: #77b2f6
+! magenta
+URxvt.color5: #7d5cb2
+URxvt.color13: #b963c8
+! cyan
+URxvt.color6: #00838f
+URxvt.color14: #25c3dc
+! white
+URxvt.color7: #ffffff
+URxvt.color15: #ffffff
