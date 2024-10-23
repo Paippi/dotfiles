@@ -112,8 +112,8 @@ bindsym $mod+minus scratchpad show
 
 #variabbelit workspaceille
 set $ws1 "1: Browser "
-set $ws2 "2: ZAP"
-set $ws3 "3: Hours"
+set $ws2 "2"
+set $ws3 "3"
 set $ws4 "4: Communication "
 set $ws5 "5: "
 set $ws10 "10: Music "
