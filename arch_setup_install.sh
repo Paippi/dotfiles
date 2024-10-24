@@ -1,5 +1,5 @@
 echo "Downloading basic programs..."
-sudo pacman --noconfirm -Syu xorg rofi i3 htop unzip neovim picom base base-devel feh alsa-utils pavucontrol rxvt-unicode python python-pipenv git curl pulseaudio wget xclip firefox spotify-launcher ranger pyenv ttf-bitstream-vera ttf-font-awesome urxvt-perls ctags nodejs npm telegram-desktop powerline powerline-fonts sysstat iw acpi xcape ttf-sourcecodepro-nerd
+sudo pacman --noconfirm -Syu xorg rofi i3 htop unzip neovim picom base base-devel feh alsa-utils pavucontrol rxvt-unicode python python-pipenv git curl pulseaudio wget xclip firefox spotify-launcher ranger pyenv ttf-bitstream-vera ttf-font-awesome urxvt-perls ctags nodejs npm telegram-desktop powerline powerline-fonts sysstat iw acpi xcape ttf-sourcecodepro-nerd iwd dhcpcd openssh
 
 echo "Setting up yay"
 # Install 3rdparty libraries here that cannot be installed using package manager.

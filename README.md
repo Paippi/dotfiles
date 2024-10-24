@@ -12,4 +12,6 @@
 $ config add <my file>
 $ config commit -m "Added <my file>"
 $ config push origin main
+$ config add -u # Will stage the modified and deleted files
+$ config commit -a # Will commit only the modified and deleted files
 ```

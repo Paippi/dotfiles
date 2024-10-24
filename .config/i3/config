@@ -274,7 +274,7 @@ for_window [class="^.*"] border pixel 3
 
 exec picom --fade-delta 4 -b
 exec_always feh -g 1600x900 --bg-scale $HOME/kuvat/current.jpg
-exec spotify
+exec spotify-launcher
 exec discord
 #exec /home/putki/scriptit/i3-status-mod
 exec telegram-desktop
