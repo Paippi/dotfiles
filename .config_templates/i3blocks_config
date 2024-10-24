@@ -36,13 +36,6 @@ markup=none
 # The second parameter overrides the mixer selection
 # See the script for details.
 
-[volume]
-#label=♪
-label=VOL
-interval=once
-signal=10
-#STEP=5%
-
 # Memory usage
 #
 # The type defaults to "mem" if the instance is not specified.
@@ -108,6 +101,13 @@ interval=10
 # label=BAT
 label=⚡
 interval=30
+
+[volume]
+label=♪
+# label=VOL
+interval=once
+signal=10
+#STEP=5%
 
 # Date Time
 #
