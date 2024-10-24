@@ -40,6 +40,7 @@ Plugin 'dense-analysis/ale'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'preservim/tagbar'
+Plugin 'airblade/vim-gitgutter'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
