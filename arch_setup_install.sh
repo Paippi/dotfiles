@@ -1,5 +1,13 @@
 echo "Downloading basic programs..."
-sudo pacman --noconfirm -Syu xorg rofi i3 htop unzip neovim picom base base-devel feh alsa-utils pavucontrol rxvt-unicode python python-pipenv git curl pulseaudio wget xclip firefox spotify-launcher ranger pyenv ttf-bitstream-vera ttf-font-awesome urxvt-perls ctags nodejs npm telegram-desktop powerline powerline-fonts sysstat iw acpi xcape ttf-sourcecodepro-nerd iwd dhcpcd openssh
+sudo pacman --noconfirm -Syu xorg rofi i3 htop unzip neovim picom base base-devel feh alsa-utils pavucontrol rxvt-unicode python python-pipenv git curl pulseaudio wget xclip firefox spotify-launcher ranger pyenv ttf-bitstream-vera ttf-font-awesome urxvt-perls ctags nodejs npm telegram-desktop powerline powerline-fonts sysstat iw acpi xcape ttf-sourcecodepro-nerd iwd dhcpcd openssh systemd-resolvconf
+
+# Basic networking setup. Systemd-networkd is required for systemd-resolved, which will
+# manage dns settings... This isn't absolutely required, but services like VPN might not
+# work without it.
+systemctl enable systemd-networkd
+systemctl start systemd-networkd
+systemctl enable systemd-resolved
+systemctl start systemd-resolved
 
 echo "Setting up yay"
 # Install 3rdparty libraries here that cannot be installed using package manager.
