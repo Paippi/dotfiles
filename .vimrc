@@ -16,12 +16,6 @@ nmap ,c :%s///gn <CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 " autocmd VimLeave * call system("xsel -ib", getreg('+'))
-" Start NERDTree. If a file is specified, move the cursor to its window.
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
-" Exit Vim if NERDTree is the only window remaining in the only tab.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-autocmd BufWinEnter * NERDTreeMirror
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -130,6 +124,13 @@ if has("autocmd")
 
   " For all text files set 'textwidth' to 78 characters.
   autocmd FileType text setlocal textwidth=78
+
+  " Start NERDTree. If a file is specified, move the cursor to its window.
+  autocmd StdinReadPre * let s:std_in=1
+  autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
+  " Exit Vim if NERDTree is the only window remaining in the only tab.
+  autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | call feedkeys(":quit\<CR>:\<BS>") | endif
+  autocmd BufWinEnter * if !(&buftype == "quickfix" || &buftype == "nofile") && getcmdwintype() == '' | silent NERDTreeMirror | endif
 
   augroup END
 
