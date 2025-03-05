@@ -233,3 +233,13 @@ If you have windows dualboot you might want to change RTC (real-time clock) to u
 ```
 $ timedatectl set-local-rtc 1
 ```
+
+# Debugging
+
+If you didn't setup disk encryption and are noticing a long time for system boot check if TPM (Trusted Platform Module) is causing the delay
+
+```
+$ sudo journalctl -k --grep=tpm
+```
+
+Disable tpm in bios if not in use e.g., dualboot.
