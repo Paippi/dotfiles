@@ -286,8 +286,11 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master -q 1%-
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master -q 1%+
 #bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute" //Verrannollinen kahteen ylempään
 #bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute" //-..-
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+
+# bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+# bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec brightnessctl set -- +10%
+bindsym XF86MonBrightnessDown exec brightnessctl set -- -10%
 
 bindsym $mod+d exec rofi -show run -eh 2 -location 1 -font "System San Francisco Display Bold 12"
 #bindsym $mod+p exec feh -g 800x450 -Z /home/putki/Downloads/vi-vim-cheat-sheet.gif
