@@ -4,6 +4,6 @@ setxkbmap -layout fi
 # for some reason
 # setxkbmap -option 'caps:escape' doesn't work at all... Maybe "escape" isn't a thing
 # and swapescape is.
-setxkbmap -option 'caps:swapescape'
-setxkbmap -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lock=Escape' &
+setxkbmap -option 'caps:swapescape' -option 'caps:ctrl_modifier'
+# setxkbmap -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lock=Escape'
 
