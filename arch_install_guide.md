@@ -236,6 +236,8 @@ $ timedatectl set-local-rtc 1
 
 # Debugging
 
+## Long Bootup Time
+
 If you didn't setup disk encryption and are noticing a long time for system boot check if TPM (Trusted Platform Module) is causing the delay
 
 ```
@@ -243,3 +245,14 @@ $ sudo journalctl -k --grep=tpm
 ```
 
 Disable tpm in bios if not in use e.g., dualboot.
+
+## Audio Device Doesn't Resume After Idle
+
+If having audio problems that get fixed by reselecting the audio profile from pavucontrol, or using pulseaudio.
+
+```
+$ pacmd set-card-profile alsa_card.pci-0000_00_1f.3 output:analog-stereo
+$ pacmd set-card-profile alsa_card.pci-0000_00_1f.3 output:analog-stereo+input:analog-stereo
+```
+
+Try commenting out `load-module module-suspend-on-idle` from `/etc/pulse/default.pa`
