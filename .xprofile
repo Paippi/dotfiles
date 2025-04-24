@@ -4,6 +4,9 @@ setxkbmap -layout fi
 # for some reason
 # setxkbmap -option 'caps:escape' doesn't work at all... Maybe "escape" isn't a thing
 # and swapescape is.
-setxkbmap -option 'caps:swapescape' -option 'caps:ctrl_modifier'
-# setxkbmap -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lock=Escape'
+# Put `&` at the end of xcape so it doesn't block. `setxkbmap` is instant. Depending on the keyboard you may need to adjust the timeout time
+setxkbmap -option 'caps:escape_shifted_capslock' -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lock=Escape' -t 50 &
+
+# **DONT** try this for some reason remapping esc to caps makes it work also as esc _sometimes_.
+# setxkbmap -option 'caps:swapescape' -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lock=Escape'
 
