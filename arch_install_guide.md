@@ -264,3 +264,12 @@ Likely coc has updated its requirements run
 ```
 $ fix_coc.sh
 ```
+
+## In Case of Connection Problems with Mirrors
+
+Install `reflector` and update mirrors
+
+```
+$ reflector -c "FI" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
+```
+
