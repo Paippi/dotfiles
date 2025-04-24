@@ -1,5 +1,5 @@
 echo "Downloading basic programs..."
-sudo pacman --noconfirm -Syu xorg rofi i3 htop unzip neovim picom base base-devel feh alsa-utils pavucontrol rxvt-unicode python python-pipenv git curl pulseaudio wget xclip firefox spotify-launcher ranger pyenv ttf-bitstream-vera ttf-font-awesome urxvt-perls ctags nodejs npm telegram-desktop powerline powerline-fonts sysstat iw acpi xcape ttf-sourcecodepro-nerd iwd dhcpcd openssh systemd-resolvconf imagemagick
+sudo pacman --noconfirm -Syu xorg rofi i3 htop unzip neovim picom base base-devel feh alsa-utils pavucontrol rxvt-unicode python python-pipenv git curl pulseaudio wget xclip firefox spotify-launcher ranger pyenv ttf-bitstream-vera ttf-font-awesome urxvt-perls ctags nodejs npm telegram-desktop powerline powerline-fonts sysstat iw acpi xcape ttf-sourcecodepro-nerd iwd dhcpcd openssh systemd-resolvconf imagemagick python-pynvim python-jedi
 
 # Basic networking setup. Systemd-networkd is required for systemd-resolved, which will
 # manage dns settings... This isn't absolutely required, but services like VPN might not
