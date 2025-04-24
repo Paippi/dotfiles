@@ -6,7 +6,6 @@ syntax on
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 "omat setit"
-set pastetoggle=<F2>
 set clipboard=unnamedplus
 nmap ,c :%s///gn <CR>
 "inoremap = <Space>=<Space>
