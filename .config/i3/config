@@ -295,3 +295,4 @@ bindsym XF86MonBrightnessDown exec brightnessctl set -- -10%
 bindsym $mod+d exec rofi -show run -eh 2 -location 1 -font "System San Francisco Display Bold 12"
 #bindsym $mod+p exec feh -g 800x450 -Z /home/putki/Downloads/vi-vim-cheat-sheet.gif
 bindsym $mod+shift+Return exec urxvt -e ranger
+bindsym --release $mod+shift+s exec --no-startup-id import png:- | xclip -sel clipboard -t image/png
