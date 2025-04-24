@@ -256,3 +256,11 @@ $ pacmd set-card-profile alsa_card.pci-0000_00_1f.3 output:analog-stereo+input:a
 ```
 
 Try commenting out `load-module module-suspend-on-idle` from `/etc/pulse/default.pa`
+
+## Problems With nvim After Updating Plugins
+
+Likely coc has updated its requirements run
+
+```
+$ fix_coc.sh
+```
