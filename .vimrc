@@ -1,20 +1,10 @@
-set nocompatible              " be iMproved, required
-filetype on                  " required
+set nocompatible            " be iMproved, required
+filetype on                 " required
 syntax on
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-"omat setit"
 set clipboard=unnamedplus
-nmap ,c :%s///gn <CR>
-"inoremap = <Space>=<Space>
-"inoremap " ""<Esc>i
-"inoremap ' ''<Esc>i
-"inoremap ( ()<Esc>i
-nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
-" autocmd VimLeave * call system("xsel -ib", getreg('+'))
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -22,11 +12,34 @@ set shiftround
 set expandtab
 set number relativenumber
 
+" Bindings
+map <C-t> :TagbarToggle<CR>
+map <F6> :setlocal spell! spelllang=en_us <CR>
+map <F9> :!clear && python % <CR>
+nmap ,c :%s///gn <CR>
+nnoremap <C-LeftMouse> :ALEGoToDefinition<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <F3> :set hls! <CR>
+nnoremap <F4> :set number! relativenumber! <CR>
+nnoremap <F5> :set number! <CR>
+nnoremap <Leader>f :CommandT<CR>
+" No idea what this was for.
+" autocmd VimLeave * call system("xsel -ib", getreg('+'))
 
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" Plugin settings
+let g:ale_completion_enabled = 1
+let g:ale_fixers = {'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines'], 'python': ['black', 'trim_whitespace', 'remove_trailing_lines']}
+let g:ale_linters = {'python': ['pylint']}
+let g:ale_python_executable='python'
+let g:ale_fix_on_save = 1
+let g:CommandTPreferredImplementation='lua'
+let mapleader = ","
+let g:jedi#auto_initialization = 1
+let g:jedi#popup_select_first = 1
 
-" let Vundle manage Vundle, required
+" Plugins. Install using `PluginInstall`
+call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'dense-analysis/ale'
@@ -34,26 +47,9 @@ Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'preservim/tagbar'
 Plugin 'airblade/vim-gitgutter'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
 Plugin 'wincent/command-t.git'
-let g:CommandTPreferredImplementation='lua'
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
-
-" All of your Plugins must be added before the following line
-"Plugin 'Valloric/YouCompleteMe'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'auwsmit/vim-active-numbers'
 Plugin 'preservim/nerdtree'
@@ -71,26 +67,6 @@ filetype plugin on
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-nnoremap <F3> :set hls! <CR>
-let mapleader = ","
-let g:jedi#auto_initialization = 1
-let g:jedi#popup_select_first = 1
-map <F6> :setlocal spell! spelllang=en_us <CR>
-nnoremap <F5> :set number! <CR>
-map <C-t> :TagbarToggle<CR>
-nnoremap <Leader>f :CommandT<CR>
-map <F9> :!clear && python % <CR>
-nnoremap <F4> :set number! relativenumber! <CR>
-" An example for a vimrc file.
-"
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2017 Sep 20
-"
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -183,13 +159,8 @@ endfu
 set tabline=%!MyTabLine()
 
 set completeopt=menu,menuone,preview,noselect,noinsert
-nnoremap <C-LeftMouse> :ALEGoToDefinition<CR>
-let g:ale_completion_enabled = 1
-let g:ale_fixers = {'rust': ['rustfmt', 'trim_whitespace', 'remove_trailing_lines'], 'python': ['black', 'trim_whitespace', 'remove_trailing_lines']}
-let g:ale_linters = {'python': ['pylint']}
-let g:ale_python_executable='python'
-let g:ale_fix_on_save = 1
 
+" Theme
 set t_Co=256
 set background=dark
 colorscheme PaperColor
