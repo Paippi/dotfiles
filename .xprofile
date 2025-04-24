@@ -7,6 +7,6 @@ setxkbmap -layout fi
 # Put `&` at the end of xcape so it doesn't block. `setxkbmap` is instant. Depending on the keyboard you may need to adjust the timeout time
 setxkbmap -option 'caps:escape_shifted_capslock' -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lock=Escape' -t 50 &
 
-# **DONT** try this for some reason remapping caps to esc makes it work also as caps _sometimes_.
+# **DONT** try this for some reason remapping esc to caps makes it work also as caps _sometimes_.
 # setxkbmap -option 'caps:swapescape' -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lock=Escape'
 
