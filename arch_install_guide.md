@@ -273,3 +273,10 @@ Install `reflector` and update mirrors
 $ reflector -c "FI" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
 ```
 
+## Coc Plugins Not Working Properly (Failure of a Coc Plugin When Opening a File)
+
+```
+vim -c ':CocUpdate' -c 'qa!'
+```
+
+
