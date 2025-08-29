@@ -12,7 +12,7 @@
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # DEFAULT: font pango:monospace 8
-font pango: System San Francisco Display Regular 12
+font pango: System San Francisco Display Regular 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -160,7 +160,7 @@ bindsym $mod+o [instance="pinggi"] scratchpad show; [instance="pinggi"] move pos
 #Workspace conffit //propr toinen arvo wm_class(string) spotify erikoistapaus koita pääasiassa käyttää assign mikä esim. discordilla
 for_window [class="Spotify"] move to workspace $ws10
 assign [class="firefox"] $ws1
-assign [class="TelegramDesktop"] $ws4  
+assign [class="Telegram"] $ws4
 assign [class="discord"] $ws4
 
 #Run R - Calc on a scratchpad window $mod + p
@@ -277,7 +277,7 @@ exec_always feh -g 1600x900 --bg-scale $HOME/kuvat/current.jpg
 exec spotify-launcher
 exec discord
 #exec /home/putki/scriptit/i3-status-mod
-exec telegram-desktop
+exec Telegram
 #bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next

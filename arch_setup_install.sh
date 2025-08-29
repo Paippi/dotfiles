@@ -1,5 +1,8 @@
+echo "Temporarily disabling IPv6, because some mirrors don't work 100% of the time when IPv6 is enabled..."
+sudo systctl -w net.ipv6.conf.all.disable_ipv6=1
+
 echo "Downloading basic programs..."
-sudo pacman --noconfirm -Syu xorg rofi i3 htop unzip neovim picom base base-devel feh alsa-utils pavucontrol rxvt-unicode python python-pipenv git curl pulseaudio wget xclip firefox spotify-launcher ranger pyenv ttf-bitstream-vera ttf-font-awesome urxvt-perls ctags nodejs npm telegram-desktop powerline powerline-fonts sysstat iw acpi xcape ttf-sourcecodepro-nerd iwd dhcpcd openssh systemd-resolvconf imagemagick python-pynvim python-jedi
+sudo pacman --noconfirm -Syu xorg xorg-xinit rofi i3 htop unzip neovim picom base base-devel feh alsa-utils pavucontrol rxvt-unicode python python-pipenv git curl pulseaudio wget xclip firefox spotify-launcher ranger pyenv ttf-bitstream-vera ttf-font-awesome urxvt-perls ctags nodejs npm telegram-desktop powerline powerline-fonts sysstat iw acpi xcape ttf-sourcecodepro-nerd iwd dhcpcd openssh systemd-resolvconf imagemagick python-pynvim python-jedi zsh
 
 # Basic networking setup. Systemd-networkd is required for systemd-resolved, which will
 # manage dns settings... This isn't absolutely required, but services like VPN might not
@@ -67,10 +70,10 @@ vim -c ':CocInstall coc-rust-analyzer coc-pyright coc-json coc-tsserver coc-toml
 
 echo "Setup i3blocks..."
 git clone https://github.com/vivien/i3blocks-contrib $HOME/.config/i3blocks
-envsubst "$HOME" < $HOME/.config_templates/i3blocks_config > $HOME/.config/i3blocks/config
+envsubst '${HOME}' < $HOME/.config_templates/i3blocks_config > $HOME/.config/i3blocks/config
 
 echo "Setup rofi..."
-envsubst "$HOME" < $HOME/.config_templates/config.rasi > $HOME/.config/rofi/config.rasi
+envsubst '${HOME}' < $HOME/.config_templates/config.rasi > $HOME/.config/rofi/config.rasi
 
 # TODO: automate
 echo "From Firefox set tab auto close off"
@@ -82,3 +85,5 @@ echo "Depending on your CPU either install amd-ucode or intel-ucode"
 echo "If using windows dualboot you might want to set RTC to use local time."
 echo "$ timedatectl set-local-rtc 1"
 
+echo "Re-enable ipv6"
+sudo systctl -w net.ipv6.conf.all.disable_ipv6=0
