@@ -2,15 +2,22 @@ echo "Temporarily disabling IPv6, because some mirrors don't work 100% of the ti
 sudo systctl -w net.ipv6.conf.all.disable_ipv6=1
 
 echo "Downloading basic programs..."
-sudo pacman --noconfirm -Syu xorg xorg-xinit rofi i3 htop unzip neovim picom base base-devel feh alsa-utils pavucontrol rxvt-unicode python python-pipenv git curl pulseaudio wget xclip firefox spotify-launcher ranger pyenv ttf-bitstream-vera ttf-font-awesome urxvt-perls ctags nodejs npm telegram-desktop powerline powerline-fonts sysstat iw acpi xcape ttf-sourcecodepro-nerd iwd dhcpcd openssh systemd-resolvconf imagemagick python-pynvim python-jedi zsh
+sudo pacman --noconfirm -Syu xorg xorg-xinit rofi i3 htop unzip neovim picom   \
+    base base-devel feh alsa-utils pavucontrol rxvt-unicode python             \
+    python-pipenv git curl pulseaudio wget xclip firefox spotify-launcher      \
+    ranger pyenv ttf-bitstream-vera ttf-font-awesome urxvt-perls ctags nodejs  \
+    npm telegram-desktop powerline powerline-fonts sysstat iw acpi xcape       \
+    ttf-sourcecodepro-nerd iwd dhcpcd openssh systemd-resolvconf imagemagick   \
+    python-pynvim python-jedi zsh util-linux
 
 # Basic networking setup. Systemd-networkd is required for systemd-resolved, which will
 # manage dns settings... This isn't absolutely required, but services like VPN might not
 # work without it.
-systemctl enable systemd-networkd
-systemctl start systemd-networkd
-systemctl enable systemd-resolved
-systemctl start systemd-resolved
+systemctl enable --now systemd-networkd
+systemctl enable --now systemd-resolved
+
+# Enable periodic TRIM for SSDs for performance improvements.
+systemctl enable --now fstrim
 
 echo "Setting up yay"
 # Install 3rdparty libraries here that cannot be installed using package manager.
