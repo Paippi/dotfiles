@@ -17,7 +17,7 @@ systemctl enable --now systemd-networkd
 systemctl enable --now systemd-resolved
 
 # Enable periodic TRIM for SSDs for performance improvements.
-systemctl enable --now fstrim
+systemctl enable --now fstrim.timer
 
 echo "Setting up yay"
 # Install 3rdparty libraries here that cannot be installed using package manager.
