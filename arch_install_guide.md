@@ -71,16 +71,36 @@ n
 q
 ```
 
-Create UEFI file system on the first partition
+Prepare and open non-boot partitions for encryption (optional)
+
+```
+$ cryptsetup -v luksFormat /dev/nvme0n1p2
+$ cryptsetup open /dev/nvme0n1p2 root
+```
+
+Create UEFI file system on the first partition and mount it.
 
 ```
 $ mkfs.fat -F32 /dev/nvme0n1p1
+$ mount --mkdir /dev/nvme0n1p1 /mnt/boot
 ```
 
 Create Ext4 filesystem on the root partition
 
 ```
 $ mfks.ext4 /dev/nvme0n1p2
+$ # or if encrypted
+$ mkfs.ext4 /dev/mapper/root
+```
+
+Check that the mapping works (encrypted disk)
+
+```
+$ mount /dev/mapper/root /mnt
+$ umount /mnt
+$ cryptsetup close root
+$ cryptsetup open /dev/sda2 root
+$ mount /dev/mapper/root /mnt
 ```
 
 Sync repositories and install reflector (don't use `pacman -Syy`, like some guides do, it can be dangerous). Reflector is used to get best mirrors for your location.
@@ -105,6 +125,8 @@ Mount to the root
 
 ```
 $ mount /dev/nvme0n1p2 /mnt
+$ # or if encrpyted
+$ mount /dev/mapper/root /mnt
 ```
 
 Install necessary packages to the new system
@@ -160,10 +182,25 @@ $ vim /etc/hosts
 ::1       localhost
 ```
 
-Create new initramfs (shouldn't be necessary but just in case)
+If encrypted add keyboard and sd-encrypt hooks, and sd-vconsole for non-US console keymap.
+```
+$ # Not sure about the location maybe
+$ vim /mnt/etc/initcpio.conf
+$ # it should look like for systemd-based initramfs.
+HOOKS=(base systemd autodetect microcode modconf kms keyboard sd-vconsole block sd-encrypt filesystems fsck)
+```
+
+Create new initramfs (shouldn't be necessary if **non-encrypted**, but suggest you run it anyway)
 
 ```
 $ mkinitcpio -P
+```
+
+Configure the systemd boot loader (sd-encrypt parameter set in initramfs) for encrypted disk (not sure about the location)
+
+```
+$ vim /boot/loader/entries/arch.conf
+rd.luks.name=device-UUID=root root=/dev/mapper/root
 ```
 
 Change root password
