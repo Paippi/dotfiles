@@ -1,7 +1,7 @@
 # Arch installation
 
 1. Follow instructions in arch_install_guide.md
-2. run `$ curl -Lks https://github.com/Paippi/dotfiles/setup_dotfiles.sh | /bin/bash`
+2. run `curl -Lks https://raw.githubusercontent.com/Paippi/dotfiles/refs/heads/main/setup_dotfiles.sh | /bin/bash`
 3. run `$ bash arch_setup_install.sh`
 
 ## Keeping track of configuration changes
