@@ -11,7 +11,9 @@ set shiftwidth=4
 set shiftround
 set expandtab
 set number relativenumber
-
+silent !mkdir --parents ~/.vim/backups
+set backupdir=~/.vim/backups
+set directory=~/.vim/backups
 " Bindings
 map <C-t> :TagbarToggle<CR>
 map <F6> :setlocal spell! spelllang=en_us <CR>
