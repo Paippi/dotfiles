@@ -1,5 +1,17 @@
+#!/usr/bin/env bash
+set -ex
+sudo systemctl enable --now dhcpcd
 echo "Temporarily disabling IPv6, because some mirrors don't work 100% of the time when IPv6 is enabled..."
 sudo systctl -w net.ipv6.conf.all.disable_ipv6=1
+
+echo "Enable mirrors"
+sudo chown root:root $HOME/.system-config/pacman.conf
+sudo chmod 0644 $HOME/.system-config/pacman.conf
+sudo ln -s $HOME/.system-config/pacman.conf /etc/pacman.conf
+
+echo "Disable pc speaker + beep"
+sudo chown root:root $HOME/.system-config/no-beep.conf
+sudo chmod 0644 $HOME/.system-config/no-beep.conf
 
 echo "Downloading basic programs..."
 sudo pacman --noconfirm -Syu xorg xorg-xinit rofi i3 htop unzip neovim picom   \
@@ -8,7 +20,7 @@ sudo pacman --noconfirm -Syu xorg xorg-xinit rofi i3 htop unzip neovim picom   \
     ranger pyenv ttf-bitstream-vera ttf-font-awesome urxvt-perls ctags nodejs  \
     npm telegram-desktop powerline powerline-fonts sysstat iw acpi xcape       \
     ttf-sourcecodepro-nerd iwd dhcpcd openssh systemd-resolvconf imagemagick   \
-    python-pynvim python-jedi zsh util-linux
+    python-pynvim python-jedi zsh util-linux linux-headers dkms
 
 # Basic networking setup. Systemd-networkd is required for systemd-resolved, which will
 # manage dns settings... This isn't absolutely required, but services like VPN might not
@@ -40,13 +52,14 @@ yay -S discord
 echo "Install oh-my-zsh..."
 # Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-mv .zshrc.pre-oh-my-zsh .zshrc
+mv $HOME/.zshrc.pre-oh-my-zsh $HOME/.zshrc
 
 echo "Installing vim plugin manager Vundle..."
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+mkdir --parent $HOME/.vim/bundle
+git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 
 echo "Installing rust..."
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 echo "Creating swap file, this is not necessary if using swap partition"
 sudo mkswap -U clear --size 4G --file /swapfile

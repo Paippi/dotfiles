@@ -1,8 +1,14 @@
 # Arch installation
 
 1. Follow instructions in arch_install_guide.md
-2. run `curl -Lks https://raw.githubusercontent.com/Paippi/dotfiles/refs/heads/main/setup_dotfiles.sh | /bin/bash`
-3. run `$ bash arch_setup_install.sh`
+2. run `$ curl -Lks https://raw.githubusercontent.com/Paippi/dotfiles/refs/heads/main/.arch-setup/setup-dotfiles.sh | /bin/bash`
+3. run `$ bash $HOME/.arch-setup/arch-setup-install.sh`
+
+## Setup Nvidia Drivers (Optional)
+
+```
+bash $HOME/.arch-setup/setup-nvidia.sh
+```
 
 ## Keeping track of configuration changes
 

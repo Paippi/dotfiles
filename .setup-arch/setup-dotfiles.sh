@@ -12,3 +12,12 @@ else
 fi;
 config checkout
 config config status.showUntrackedFiles no
+config config user.name "Samuli Piippo"
+config config user.email "28383147+Paippi@users.noreply.github.com"
+
+echo "Setting up ssh keys"
+ssh-keygen
+
+echo "Changing remote to ssh"
+config remote set-url origin $(config remote -v | sed 's/https:\/\//git@/' | \
+    sed 's/\//:/' | awk -F ' ' '{print $2}' | head -n 1)
