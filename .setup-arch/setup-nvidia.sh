@@ -1,4 +1,4 @@
-yay -Syu --no-confirm nvidia-580xx-dkms nvidia-580xx-settings nvidia-580xx-utils lib32-nvidia-580xx-utils
+yay -Syu --noconfirm nvidia-580xx-dkms nvidia-580xx-settings nvidia-580xx-utils lib32-nvidia-580xx-utils
 
 sudo chown root:root $HOME/.system-config/nvidia-mkinitcpio.conf
 sudo chmod 0644 $HOME/.system-config/nvidia-mkinitcpio.conf
